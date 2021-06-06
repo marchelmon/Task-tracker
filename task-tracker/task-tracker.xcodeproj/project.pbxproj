@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3CA12AC6266CC9F800E20846 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12AC5266CC9F800E20846 /* Item.swift */; };
+		3CA12AD2266CCD3F00E20846 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12AD1266CCD3F00E20846 /* Category.swift */; };
+		3CA12AD5266CCE9000E20846 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12AD4266CCE9000E20846 /* Service.swift */; };
+		3CA12AD8266CF14600E20846 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12AD7266CF14600E20846 /* CategoryListViewController.swift */; };
 		3CDF645E266CB5C8000DBDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDF645D266CB5C8000DBDAB /* AppDelegate.swift */; };
 		3CDF6460266CB5C8000DBDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDF645F266CB5C8000DBDAB /* SceneDelegate.swift */; };
 		3CDF6462266CB5C8000DBDAB /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDF6461266CB5C8000DBDAB /* TodoListViewController.swift */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		3CA12AC5266CC9F800E20846 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		3CA12AD1266CCD3F00E20846 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		3CA12AD4266CCE9000E20846 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		3CA12AD7266CF14600E20846 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		3CDF645A266CB5C8000DBDAB /* task-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDF645D266CB5C8000DBDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CDF645F266CB5C8000DBDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				3CA12AC5266CC9F800E20846 /* Item.swift */,
+				3CA12AD1266CCD3F00E20846 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -51,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				3CDF6461266CB5C8000DBDAB /* TodoListViewController.swift */,
+				3CA12AD7266CF14600E20846 /* CategoryListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 				3CA12ACD266CCAB100E20846 /* View */,
 				3CA12ACE266CCACC00E20846 /* Supporting files */,
 				3CDF646B266CB5CA000DBDAB /* Info.plist */,
+				3CA12AD4266CCE9000E20846 /* Service.swift */,
 			);
 			path = "task-tracker";
 			sourceTree = "<group>";
@@ -173,9 +182,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CA12AC6266CC9F800E20846 /* Item.swift in Sources */,
+				3CA12AD8266CF14600E20846 /* CategoryListViewController.swift in Sources */,
+				3CA12AD2266CCD3F00E20846 /* Category.swift in Sources */,
 				3CDF6462266CB5C8000DBDAB /* TodoListViewController.swift in Sources */,
 				3CDF645E266CB5C8000DBDAB /* AppDelegate.swift in Sources */,
 				3CDF6460266CB5C8000DBDAB /* SceneDelegate.swift in Sources */,
+				3CA12AD5266CCE9000E20846 /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

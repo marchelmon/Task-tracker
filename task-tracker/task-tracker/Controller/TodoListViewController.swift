@@ -11,13 +11,32 @@ private let cellIdentifier = "TodoItemCell"
 
 class TodoListViewController: UITableViewController {
 
-    var itemArray = ["Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things", "Shopping list", "Work", "Other things"]
+    var itemArray = [Item]()
+    var categoryIndex: Int = 0
+    
+    var category: Category? {
+        didSet {
+            loadItems()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        tableView.rowHeight = 70
+        
     }
 
+    
+    //MARK: - Actions
+    
+    func loadItems() {
+        guard let items = category?.items else { return }
+        itemArray = items
+        tableView.reloadData()
+    }
+    
+    
     //MARK: - TableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +45,9 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.accessoryType = itemArray[indexPath.row].done ? .checkmark : .none
+        cell.textLabel?.text = itemArray[indexPath.row].title
+        
         return cell
     }
 
@@ -34,34 +55,30 @@ class TodoListViewController: UITableViewController {
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        if cell.accessoryType == .checkmark {
-            cell.accessoryType = .none
-        } else {
-            cell.accessoryType = .checkmark
-        }
+        cell.accessoryType = itemArray[indexPath.row].done ? .checkmark : .none
+                
+        Service.shared.categories[categoryIndex].items = itemArray
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     //MARK: - Add new items
     
     @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
-    
         var alertTextField = UITextField()
         
-        let alert = UIAlertController(title: "Add task", message: "", preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "Add item", style: .default) { action in
-            self.itemArray.append(alertTextField.text ?? "")
+            let newItem = Item(title: alertTextField.text ?? "", done: false)
+            self.itemArray.append(newItem)
+            Service.shared.categories[self.categoryIndex].items.append(newItem)
             self.tableView.reloadData()
         }
-        
+        let alert = UIAlertController(title: "Add task", message: "", preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Create new item"
             alertTextField = textField
         }
-        
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
