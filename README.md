@@ -1,2 +1,2 @@
 # Task-tracker
-Create lists of task to complete
+Create lists of tasks to complete
