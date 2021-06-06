@@ -68,15 +68,16 @@ class TodoListViewController: UITableViewController {
     @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
         var alertTextField = UITextField()
         
-        let action = UIAlertAction(title: "Add item", style: .default) { action in
-            let newItem = Item(title: alertTextField.text ?? "", done: false)
+        let action = UIAlertAction(title: "Add", style: .default) { action in
+            if alertTextField.text == "" { return }
+            let newItem = Item(title: alertTextField.text!, done: false)
             self.itemArray.append(newItem)
             Service.shared.categories[self.categoryIndex].items.append(newItem)
             self.tableView.reloadData()
         }
-        let alert = UIAlertController(title: "Add task", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Task", message: "", preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "Create new item"
+            textField.placeholder = "Task name.."
             alertTextField = textField
         }
         alert.addAction(action)
